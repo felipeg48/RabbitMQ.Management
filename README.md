@@ -14,7 +14,7 @@ A C# RabbitMQ Management library. It's a wrapper of the REST API that RabbitMQ s
 
 ## Examples
 
-```c#
+```csharp
 	var manager = new RabbitMQManager.GetOverview()
 	result.QueueTotals; 
 ```
