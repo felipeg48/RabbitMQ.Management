@@ -5,11 +5,16 @@ using Newtonsoft.Json.Linq;
 
 namespace RabbitMQ.Management
 {
+//	public class Overview
+//	{
+//		public JArray RabbitMQModel { set; get; }
+//	}
+
 	public class RabbitMQModel
 	{
-
 		[JsonProperty("management_version")]
 		public string ManagementVersion { get; set; }
+
 
 		[JsonProperty("statistics_level")]
 		public string StatisticsLevel { get; set; }
@@ -26,11 +31,11 @@ namespace RabbitMQ.Management
 		[JsonProperty("erlang_full_version")]
 		public string ErlangFullVersion { get; set; }
 
-		[JsonProperty("message_stats")]
-		public MessageStats MessageStats { get; set; }
+		//[JsonProperty("message_stats")]
+		//public MessageStats MessageStats { get; set; }
 
-		[JsonProperty("queue_totals")]
-		public QueueTotals QueueTotals { get; set; }
+		//[JsonProperty("queue_totals")]
+		//public QueueTotals QueueTotals { get; set; }
 
 		[JsonProperty("object_totals")]
 		public ObjectTotals ObjectTotals { get; set; }
@@ -46,6 +51,7 @@ namespace RabbitMQ.Management
 
 		[JsonProperty("contexts")]
 		public Context[] Contexts { get; set; }
+
 	}
 
     public class ExchangeType
@@ -253,5 +259,447 @@ namespace RabbitMQ.Management
         public bool? IgnoreInUse { get; set; }
     }
 
-    
+	public class RabbitMQNode
+	{
+
+		[JsonProperty("partitions")]
+		public object[] Partitions { get; set; }
+
+		[JsonProperty("os_pid")]
+		public string OsPid { get; set; }
+
+		[JsonProperty("fd_used")]
+		public string FdUsed { get; set; }
+
+		[JsonProperty("fd_total")]
+		public int FdTotal { get; set; }
+
+		[JsonProperty("sockets_used")]
+		public int SocketsUsed { get; set; }
+
+		[JsonProperty("sockets_total")]
+		public int SocketsTotal { get; set; }
+
+		[JsonProperty("mem_used")]
+		public int MemUsed { get; set; }
+
+		[JsonProperty("mem_limit")]
+		public int MemLimit { get; set; }
+
+		[JsonProperty("mem_alarm")]
+		public bool MemAlarm { get; set; }
+
+		[JsonProperty("disk_free_limit")]
+		public int DiskFreeLimit { get; set; }
+
+		[JsonProperty("disk_free")]
+		public long DiskFree { get; set; }
+
+		[JsonProperty("disk_free_alarm")]
+		public bool DiskFreeAlarm { get; set; }
+
+		[JsonProperty("proc_used")]
+		public int ProcUsed { get; set; }
+
+		[JsonProperty("proc_total")]
+		public int ProcTotal { get; set; }
+
+		[JsonProperty("statistics_level")]
+		public string StatisticsLevel { get; set; }
+
+		[JsonProperty("uptime")]
+		public int Uptime { get; set; }
+
+		[JsonProperty("run_queue")]
+		public int RunQueue { get; set; }
+
+		[JsonProperty("processors")]
+		public int Processors { get; set; }
+
+		[JsonProperty("exchange_types")]
+		public ExchangeType[] ExchangeTypes { get; set; }
+
+		[JsonProperty("auth_mechanisms")]
+		public AuthMechanism[] AuthMechanisms { get; set; }
+
+		[JsonProperty("applications")]
+		public Application[] Applications { get; set; }
+
+		[JsonProperty("contexts")]
+		public Context[] Contexts { get; set; }
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("type")]
+		public string Type { get; set; }
+
+		[JsonProperty("running")]
+		public bool Running { get; set; }
+	}
+
+
+
+	public class AuthMechanism
+	{
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("description")]
+		public string Description { get; set; }
+
+		[JsonProperty("enabled")]
+		public bool Enabled { get; set; }
+	}
+
+	public class Application
+	{
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("description")]
+		public string Description { get; set; }
+
+		[JsonProperty("version")]
+		public string Version { get; set; }
+	}
+
+	public class RabbitMQQueue
+	{
+
+		[JsonProperty("memory")]
+		public int Memory { get; set; }
+
+		[JsonProperty("idle_since")]
+		public string IdleSince { get; set; }
+
+		[JsonProperty("policy")]
+		public string Policy { get; set; }
+
+		[JsonProperty("exclusive_consumer_tag")]
+		public string ExclusiveConsumerTag { get; set; }
+
+		[JsonProperty("consumers")]
+		public int Consumers { get; set; }
+
+		[JsonProperty("backing_queue_status")]
+		public BackingQueueStatus BackingQueueStatus { get; set; }
+
+		[JsonProperty("status")]
+		public string Status { get; set; }
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("vhost")]
+		public string Vhost { get; set; }
+
+		[JsonProperty("durable")]
+		public bool Durable { get; set; }
+
+		[JsonProperty("auto_delete")]
+		public bool AutoDelete { get; set; }
+
+		[JsonProperty("arguments")]
+		public Arguments Arguments { get; set; }
+
+		[JsonProperty("node")]
+		public string Node { get; set; }
+
+		[JsonProperty("message_stats")]
+		public MessageStats MessageStats { get; set; }
+
+		[JsonProperty("messages")]
+		public int? Messages { get; set; }
+
+		[JsonProperty("messages_details")]
+		public MessagesDetails MessagesDetails { get; set; }
+
+		[JsonProperty("messages_ready")]
+		public int? MessagesReady { get; set; }
+
+		[JsonProperty("messages_ready_details")]
+		public MessagesReadyDetails MessagesReadyDetails { get; set; }
+
+		[JsonProperty("messages_unacknowledged")]
+		public int? MessagesUnacknowledged { get; set; }
+
+		[JsonProperty("messages_unacknowledged_details")]
+		public MessagesUnacknowledgedDetails MessagesUnacknowledgedDetails { get; set; }
+	}
+
+	public class BackingQueueStatus
+	{
+
+		[JsonProperty("q1")]
+		public int Q1 { get; set; }
+
+		[JsonProperty("q2")]
+		public int Q2 { get; set; }
+
+		[JsonProperty("delta")]
+		public object[] Delta { get; set; }
+
+		[JsonProperty("q3")]
+		public int Q3 { get; set; }
+
+		[JsonProperty("q4")]
+		public int Q4 { get; set; }
+
+		[JsonProperty("len")]
+		public int Len { get; set; }
+
+		[JsonProperty("pending_acks")]
+		public int PendingAcks { get; set; }
+
+		[JsonProperty("target_ram_count")]
+		public string TargetRamCount { get; set; }
+
+		[JsonProperty("ram_msg_count")]
+		public int RamMsgCount { get; set; }
+
+		[JsonProperty("ram_ack_count")]
+		public int RamAckCount { get; set; }
+
+		[JsonProperty("next_seq_id")]
+		public int NextSeqId { get; set; }
+
+		[JsonProperty("persistent_count")]
+		public int PersistentCount { get; set; }
+
+		[JsonProperty("avg_ingress_rate")]
+		public double AvgIngressRate { get; set; }
+
+		[JsonProperty("avg_egress_rate")]
+		public double AvgEgressRate { get; set; }
+
+		[JsonProperty("avg_ack_ingress_rate")]
+		public double AvgAckIngressRate { get; set; }
+
+		[JsonProperty("avg_ack_egress_rate")]
+		public int AvgAckEgressRate { get; set; }
+	}
+
+	public class User
+	{
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("password_hash")]
+		public string PasswordHash { get; set; }
+
+		[JsonProperty("tags")]
+		public string Tags { get; set; }
+	}
+
+	public class Vhost
+	{
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+	}
+
+	public class Permission
+	{
+
+		[JsonProperty("user")]
+		public string User { get; set; }
+
+		[JsonProperty("vhost")]
+		public string Vhost { get; set; }
+
+		[JsonProperty("configure")]
+		public string Configure { get; set; }
+
+		[JsonProperty("write")]
+		public string Write { get; set; }
+
+		[JsonProperty("read")]
+		public string Read { get; set; }
+	}
+
+
+
+	public class Queue
+	{
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("vhost")]
+		public string Vhost { get; set; }
+
+		[JsonProperty("durable")]
+		public bool Durable { get; set; }
+
+		[JsonProperty("auto_delete")]
+		public bool AutoDelete { get; set; }
+
+		[JsonProperty("arguments")]
+		public Arguments Arguments { get; set; }
+	}
+
+	public class Arguments2
+	{
+
+	}
+
+	public class Exchanx
+	{
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("vhost")]
+		public string Vhost { get; set; }
+
+		[JsonProperty("type")]
+		public string Type { get; set; }
+
+		[JsonProperty("durable")]
+		public bool Durable { get; set; }
+
+		[JsonProperty("auto_delete")]
+		public bool AutoDelete { get; set; }
+
+		[JsonProperty("internal")]
+		public bool Internal { get; set; }
+
+		[JsonProperty("arguments")]
+		public Arguments2 Arguments { get; set; }
+	}
+
+	public class Arguments3
+	{
+
+	}
+
+	public class PublishInDetails
+	{
+
+		[JsonProperty("rate")]
+		public int Rate { get; set; }
+	}
+
+	public class PublishOutDetails
+	{
+
+		[JsonProperty("rate")]
+		public int Rate { get; set; }
+	}
+
+	public class RabbitMQExchange
+	{
+
+		[JsonProperty("message_stats")]
+		public MessageStats MessageStats { get; set; }
+
+		[JsonProperty("name")]
+		public string Name { get; set; }
+
+		[JsonProperty("vhost")]
+		public string Vhost { get; set; }
+
+		[JsonProperty("type")]
+		public string Type { get; set; }
+
+		[JsonProperty("durable")]
+		public bool Durable { get; set; }
+
+		[JsonProperty("auto_delete")]
+		public bool AutoDelete { get; set; }
+
+		[JsonProperty("internal")]
+		public bool Internal { get; set; }
+
+		[JsonProperty("arguments")]
+		public Arguments Arguments { get; set; }
+	}
+
+
+	public class Binding
+	{
+
+		[JsonProperty("source")]
+		public string Source { get; set; }
+
+		[JsonProperty("vhost")]
+		public string Vhost { get; set; }
+
+		[JsonProperty("destination")]
+		public string Destination { get; set; }
+
+		[JsonProperty("destination_type")]
+		public string DestinationType { get; set; }
+
+		[JsonProperty("routing_key")]
+		public string RoutingKey { get; set; }
+
+		[JsonProperty("arguments")]
+		public Arguments3 Arguments { get; set; }
+	}
+
+	public class RabbitMQDefinition
+	{
+
+		[JsonProperty("rabbit_version")]
+		public string RabbitVersion { get; set; }
+
+		[JsonProperty("users")]
+		public User[] Users { get; set; }
+
+		[JsonProperty("vhosts")]
+		public Vhost[] Vhosts { get; set; }
+
+		[JsonProperty("permissions")]
+		public Permission[] Permissions { get; set; }
+
+		[JsonProperty("parameters")]
+		public object[] Parameters { get; set; }
+
+		[JsonProperty("policies")]
+		public object[] Policies { get; set; }
+
+		[JsonProperty("queues")]
+		public Queue[] Queues { get; set; }
+
+		[JsonProperty("exchanges")]
+		public Exchanx[] Exchanges { get; set; }
+
+		[JsonProperty("bindings")]
+		public Binding[] Bindings { get; set; }
+	}
+
+	public class RabbitMQBinding
+	{
+
+		[JsonProperty("source")]
+		public string Source { get; set; }
+
+		[JsonProperty("vhost")]
+		public string Vhost { get; set; }
+
+		[JsonProperty("destination")]
+		public string Destination { get; set; }
+
+		[JsonProperty("destination_type")]
+		public string DestinationType { get; set; }
+
+		[JsonProperty("routing_key")]
+		public string RoutingKey { get; set; }
+
+		[JsonProperty("arguments")]
+		public Arguments Arguments { get; set; }
+
+		[JsonProperty("properties_key")]
+		public string PropertiesKey { get; set; }
+	}
+
+
+	public class Arguments
+	{
+	}
 }

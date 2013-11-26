@@ -21,6 +21,6 @@ Global
 		{A92976EB-5326-48D5-8A09-98C389015C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = RabbitMQ.Management.csproj
+		StartupItem = RabbitMQ.Management.Test\RabbitMQ.Management.Test.csproj
 	EndGlobalSection
 EndGlobal

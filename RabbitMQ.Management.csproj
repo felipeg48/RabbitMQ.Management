@@ -33,17 +33,13 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.5.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Dynamic" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="RabbitMQ.cs" />
     <Compile Include="RabbitMQModel.cs" />
-    <Compile Include="RabbitMQQueues.cs" />
-    <Compile Include="RabbitMQNode.cs" />
-    <Compile Include="RabbitMQDefinition.cs" />
-    <Compile Include="RabbitMQExchange.cs" />
-    <Compile Include="RabbitMQBinding.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
