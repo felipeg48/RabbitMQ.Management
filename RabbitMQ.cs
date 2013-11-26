@@ -13,10 +13,6 @@ namespace RabbitMQ.Management
 	{
 		public static RabbitMQModel GetOverview()
 		{
-			//WebClient wc = new WebClient();
-			//var json = wc.DownloadString("http://guest:guest@localhost:15672/api/overview");
-			//dynamic rmq = JsonConvert.DeserializeObject<dynamic>(json);
-
 			HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create("http://localhost:15672/api/overview");
 			webRequest.Method = "GET";
 			webRequest.Accept = "application/json";
@@ -27,6 +23,11 @@ namespace RabbitMQ.Management
 			RabbitMQModel rmq = JsonConvert.DeserializeObject<RabbitMQModel>(new StreamReader(webResponse.GetResponseStream()).ReadToEnd());
 			return rmq;
 		}
+
+	}
+
+	public class RabbitMQAdmin : DynamicObject
+	{
 
 	}
 }

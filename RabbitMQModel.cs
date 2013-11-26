@@ -1,15 +1,12 @@
 using System;
+using System.Text;
 using System.Collections.Generic;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace RabbitMQ.Management
 {
-//	public class Overview
-//	{
-//		public JArray RabbitMQModel { set; get; }
-//	}
-
 	public class RabbitMQModel
 	{
 		[JsonProperty("management_version")]
@@ -30,12 +27,41 @@ namespace RabbitMQ.Management
 
 		[JsonProperty("erlang_full_version")]
 		public string ErlangFullVersion { get; set; }
+			
+		[JsonProperty("message_stats")]
+		private object MessageStatsJson {
+			set;
+			get;
+		}
 
-		//[JsonProperty("message_stats")]
-		//public MessageStats MessageStats { get; set; }
+		public MessageStats MessageStats {
+			get 
+			{ 
+				if (this.MessageStatsJson.GetType ().IsAssignableFrom (typeof(Newtonsoft.Json.Linq.JArray)) && ((Newtonsoft.Json.Linq.JArray)this.MessageStatsJson).Count == 0)
+					return (new MessageStats ());
+				else if (this.MessageStatsJson.GetType ().IsAssignableFrom (typeof(Newtonsoft.Json.Linq.JObject)))
+					return ((Newtonsoft.Json.Linq.JObject)MessageStatsJson).ToObject<MessageStats> ();
+				else
+					return null; //TODO: ?? What type to return?? I need to add more examples.
+			}
+		}
 
-		//[JsonProperty("queue_totals")]
-		//public QueueTotals QueueTotals { get; set; }
+		[JsonProperty("queue_totals")]
+		private object QueueTotalsJson { set; get; }
+
+
+		public QueueTotals QueueTotals { 
+			get 
+			{ 
+				if (this.QueueTotalsJson.GetType ().IsAssignableFrom (typeof(Newtonsoft.Json.Linq.JArray)) && ((Newtonsoft.Json.Linq.JArray)this.QueueTotalsJson).Count == 0)
+					return (new QueueTotals ());
+				else if (this.QueueTotalsJson.GetType ().IsAssignableFrom (typeof(Newtonsoft.Json.Linq.JObject)))
+					return ((Newtonsoft.Json.Linq.JObject)QueueTotalsJson).ToObject<QueueTotals> ();
+				else
+					return null; //TODO: ?? What type to return?? I need to add more examples.
+			
+			}
+		}
 
 		[JsonProperty("object_totals")]
 		public ObjectTotals ObjectTotals { get; set; }

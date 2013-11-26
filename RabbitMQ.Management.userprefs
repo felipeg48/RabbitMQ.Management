@@ -1,9 +1,15 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="RabbitMQQueues.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RabbitMQModel.cs">
     <Files>
-      <File FileName="RabbitMQQueues.cs" Line="165" Column="3" />
+      <File FileName="RabbitMQ.cs" Line="23" Column="3" />
+      <File FileName="RabbitMQModel.cs" Line="593" Column="2" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
