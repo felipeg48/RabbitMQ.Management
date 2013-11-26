@@ -27,13 +27,28 @@ A C# RabbitMQ Management library. It's a wrapper of the REST API that RabbitMQ s
 Examples:
 
 ```csharp
-	var manager = RabbitMQAdmin.Connect.To("localhost").WithCredentials("","").UseSSL(true);`
+	var manager = RabbitMQAdmin.Connect.To("localhost").WithCredentials("","").UseSSL(true);
 	manager.Create
 				.Alarm
 				.If
-				.Queue.Messages.Ready.Is(10)
+				.Queue.Messages.UnAcknowledge.Is(10)
 				.Then
-				.Send.Email("admin@mycompany.com");
+				.Send.Email.To("admin@mycompany.com");
+				
+	
+	manager.Create
+				.Alarm
+				.If
+				.Memory.IsLessThan(400.Megabytes)
+				.Then
+				.Send.Email.To("admin@mycompany.com","support@company.com").IncludeDetails(true);
+				
+	manger.Create
+				.Alarm
+				.If
+				.Node("rabbit@vm01").IsDown
+				.Then
+				.Send.SMS("1-800-222-3333").IncludeDetails(true);
 ```
 
 
